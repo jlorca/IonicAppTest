@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { AccountDTO } from '../models/account-dto.model';
 
 @Component({
   selector: 'app-sf-accounts',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
-  private icons = [
+  /*private icons = [
     'flask',
     'wifi',
     'beer',
@@ -18,22 +20,23 @@ export class ListPage implements OnInit {
     'boat',
     'bluetooth',
     'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
+  ];*/
+  //public items: Array<{ title: string; note: string; icon: string }> = [];
+  public accounts :AccountDTO[] = [];
+
+  constructor(private apiService: ApiService) {
+    /*for (let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Item ' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
-    }
+    }*/
   }
 
   ngOnInit() {
+    this.apiService.findAllAccounts().subscribe(data => {
+      this.accounts = data;
+    }, () => {});
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
 }
