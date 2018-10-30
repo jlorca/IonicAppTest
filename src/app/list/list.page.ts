@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-sf-accounts',
   templateUrl: 'list.page.html',
   styleUrls: ['list.page.scss']
 })
