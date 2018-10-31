@@ -10,9 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AccountDetailComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

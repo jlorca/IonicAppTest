@@ -13,7 +13,7 @@ export class ApiService {
         this.baseUrl = AppConstant.BACKEND.BASE_URL;
     }
 
-    findAllAccounts(): Observable<AccountDTO[]> {
+    getAccounts(): Observable<AccountDTO[]> {
         const httpHeaders = new HttpHeaders()
         .set("Content-Type","application/json")
         .set("sf_user","jlorca.community01@gmail.com")
@@ -23,5 +23,18 @@ export class ApiService {
         };
 
         return this.http.get<AccountDTO[]>(this.baseUrl + '/accounts', httpOptions);
+    }
+
+    getAccount(accountId): Observable<AccountDTO> {
+        const httpHeaders = new HttpHeaders()
+            .set("Content-Type","application/json")
+            .set("sf_user","jlorca.community01@gmail.com")
+            .set("sf_password","lorkytest00oNIOW0hZrMAppnk8IBasYuI7s");
+
+        const httpOptions = {
+            headers: httpHeaders
+        };
+
+        return this.http.get<AccountDTO>(this.baseUrl + '/account/' + accountId, httpOptions);
     }
 }

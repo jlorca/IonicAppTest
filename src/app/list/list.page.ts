@@ -9,17 +9,20 @@ import { AccountDTO } from '../models/account-dto.model';
 })
 export class ListPage implements OnInit {
   private selectedItem: any;
-  public accounts :AccountDTO[] = [];
+  public accounts : AccountDTO[] = [];
+  public account : AccountDTO = null;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.findAllAccounts().subscribe(data => {
+    this.apiService.getAccounts().subscribe(data => {
       this.accounts = data;
     }, () => {});
   }
 
   itemSelected(accountId: number) {
-    alert('selected = ' + accountId);
+    this.apiService.getAccount(accountId).subscribe(data => {
+      this.account = data;
+    }, () => {});
   }
 }
