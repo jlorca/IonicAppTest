@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { AccountDTO } from '../models/account-dto.model';
 import { Router } from '@angular/router';
+import { AccountDTO } from '../models/account-dto.model';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-sf-accounts',

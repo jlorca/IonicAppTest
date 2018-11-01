@@ -1,7 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { AppConstant } from "../app.constant";
 import { Observable } from "rxjs";
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { AppConstant } from "../app.constant";
 import { AccountDTO } from "../models/account-dto.model";
 
 @Injectable()

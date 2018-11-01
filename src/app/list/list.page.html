@@ -10,12 +10,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-      <ion-item *ngFor="let account of accounts">
-        <ion-label>
-          <h2>{{account.Name}}</h2>
-        </ion-label>
-        <ion-button shape="round" color="primary" fill="outline" (click)="itemSelected(account.Id)">></ion-button>
-      </ion-item>
-  </ion-list>
+  <ion-infinite-scroll>
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        <ion-list>
+            <ion-item *ngFor="let account of accounts">
+              <ion-label>
+                <h2>{{account.Name}}</h2>
+              </ion-label>
+              <ion-button shape="round" color="primary" fill="outline" (click)="itemSelected(account.Id)">></ion-button>
+            </ion-item>
+        </ion-list>
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

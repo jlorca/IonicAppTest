@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountDTO } from '../models/account-dto.model';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-account-detail',
@@ -12,7 +12,7 @@ export class AccountDetailComponent implements OnInit {
 
   public account : AccountDTO = null;
 
-  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) { }
+  constructor(private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe( params => 
@@ -22,5 +22,9 @@ export class AccountDetailComponent implements OnInit {
         }, () => {})
       }
     );
+  }
+
+  clickBackHandler() {
+    this.router.navigate(['/sf-accounts/']);
   }
 }

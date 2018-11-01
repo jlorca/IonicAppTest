@@ -1,8 +1,12 @@
 <ion-card>
-    <ion-card-header>
-        <ion-card-title>{{account.Name}}</ion-card-title>
-    </ion-card-header>
+    <ion-item>
+      <ion-label>{{account.Name}}</ion-label>
+      <ion-button fill="outline" slot="end">Edit</ion-button>
+      <ion-button fill="outline" slot="end" (click)="clickBackHandler()">Back</ion-button>
+    </ion-item>
     <ion-card-content>
-        <p>The content for this card</p>
+        <p>Website: {{account.Website}}</p>
+        <p>Type: {{account.Type}}</p>
+        <p>Rating: {{account.Rating}}</p>
     </ion-card-content>
 </ion-card>
