@@ -1,12 +1,25 @@
 <ion-card>
     <ion-item>
       <ion-label>{{account.Name}}</ion-label>
-      <ion-button fill="outline" slot="end">Edit</ion-button>
+      <ion-button fill="outline" slot="end" (click)="clickEditHandler()">Edit</ion-button>
       <ion-button fill="outline" slot="end" (click)="clickBackHandler()">Back</ion-button>
     </ion-item>
     <ion-card-content>
-        <p>Website: {{account.Website}}</p>
-        <p>Type: {{account.Type}}</p>
-        <p>Rating: {{account.Rating}}</p>
+        <ion-grid>
+            <ion-row *ngIf="imageUrl">
+              <ion-col>
+                <div style="height: 100%; width: 50%">
+                    <img src="{{imageUrl}}" style="background-color:black;" height="100%" width="42">
+                </div>
+              </ion-col>
+            </ion-row>
+          <ion-row>
+            <ion-col>
+              <p>Website: {{account.Website}}</p>
+              <p>Type: {{account.Type}}</p>
+              <p>Rating: {{account.Rating}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
     </ion-card-content>
 </ion-card>

@@ -11,9 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { AccountEditionComponent } from './account-edition/account-edition.component';
 
 @NgModule({
-  declarations: [AppComponent, AccountDetailComponent],
+  declarations: [AppComponent, AccountDetailComponent, AccountEditionComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

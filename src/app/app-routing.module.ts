@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { AccountEditionComponent } from './account-edition/account-edition.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   { 
     path: 'account-detail/:id', component: AccountDetailComponent 
+  },
+  { 
+    path: 'account-edition/:id', component: AccountEditionComponent 
   }
 ];
 

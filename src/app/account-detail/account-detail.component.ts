@@ -11,6 +11,7 @@ import { ApiService } from '../services/api.service';
 export class AccountDetailComponent implements OnInit {
 
   public account : AccountDTO = null;
+  public imageUrl : string = null;
 
   constructor(private apiService: ApiService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -19,6 +20,7 @@ export class AccountDetailComponent implements OnInit {
       {
         this.apiService.getAccount([params['id']]).subscribe(data => {
           this.account = data[0];
+          this.imageUrl = data[0].Image_URL__c;
         }, () => {})
       }
     );
@@ -26,5 +28,9 @@ export class AccountDetailComponent implements OnInit {
 
   clickBackHandler() {
     this.router.navigate(['/sf-accounts/']);
+  }
+
+  clickEditHandler() {
+    this.router.navigate(['/account-edition/' + this.account.Id]);
   }
 }
