@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { AccountDTO } from '../models/account-dto.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sf-accounts',
@@ -10,9 +11,8 @@ import { AccountDTO } from '../models/account-dto.model';
 export class ListPage implements OnInit {
   private selectedItem: any;
   public accounts : AccountDTO[] = [];
-  public account : AccountDTO = null;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.apiService.getAccounts().subscribe(data => {
@@ -21,8 +21,6 @@ export class ListPage implements OnInit {
   }
 
   itemSelected(accountId: number) {
-    this.apiService.getAccount(accountId).subscribe(data => {
-      this.account = data;
-    }, () => {});
+    this.router.navigate(['/account-detail/' + accountId]);
   }
 }

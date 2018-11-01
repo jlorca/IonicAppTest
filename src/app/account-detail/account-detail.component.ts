@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { AccountDTO } from '../models/account-dto.model';
 
 @Component({
   selector: 'app-account-detail',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountDetailComponent implements OnInit {
 
-  constructor() { }
+  public account : AccountDTO = null;
+
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe( params => 
+      {
+        this.apiService.getAccount([params['id']]).subscribe(data => {
+          this.account = data[0];
+        }, () => {})
+      }
+    );
   }
-
 }

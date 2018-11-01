@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   {
     path: 'sf-accounts',
     loadChildren: './list/list.module#ListPageModule'
+  },
+  { 
+    path: 'account-detail/:id', component: AccountDetailComponent 
   }
 ];
 
