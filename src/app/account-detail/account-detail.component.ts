@@ -31,6 +31,6 @@ export class AccountDetailComponent implements OnInit {
   }
 
   clickEditHandler() {
-    this.router.navigate(['/account-edition/' + this.account.Id]);
+    this.router.navigate(['/account-edition/' + this.account.Id, this.account]);
   }
 }
