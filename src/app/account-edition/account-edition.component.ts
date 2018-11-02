@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AccountDTO } from '../models/account-dto.model';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-account-edition',
@@ -14,7 +15,8 @@ export class AccountEditionComponent implements OnInit {
   public account : AccountDTO;
   editAccountForm: FormGroup;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, private toastController: ToastController) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, 
+    private toastController: ToastController, private apiService: ApiService) {
     this.editAccountForm = this.formBuilder.group({
       accountName: [null, Validators.required],
       accountWebsite: [null, Validators.required]
@@ -37,9 +39,14 @@ export class AccountEditionComponent implements OnInit {
   async clickSaveHandler() {
     if (this.editAccountForm.valid) {
       this.prepareDataModel();
+
+      this.apiService.updateAccounts(this.account).subscribe(data => {
+        console.log('SAVED!!');
+      }, () => {});
+
     } else {
       const toast = await this.toastController.create({
-        message: 'Accout not valid!',
+        message: 'Account not valid!',
         duration: 2000,
         position: 'top'
       });

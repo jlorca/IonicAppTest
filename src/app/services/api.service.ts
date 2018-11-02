@@ -37,4 +37,17 @@ export class ApiService {
 
         return this.http.get<AccountDTO>(this.baseUrl + '/account/' + accountId, httpOptions);
     }
+
+    updateAccounts(account): Observable<any> {
+        const httpHeaders = new HttpHeaders()
+            .set("Content-Type","application/json")
+            .set("sf_user","jlorca.community01@gmail.com")
+            .set("sf_password","lorkytest00oNIOW0hZrMAppnk8IBasYuI7s");
+
+        const httpOptions = {
+            headers: httpHeaders
+        };
+
+        return this.http.put<AccountDTO>(this.baseUrl + '/accounts/', {"accounts" : account}, httpOptions);
+    }
 }
