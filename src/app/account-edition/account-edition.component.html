@@ -7,18 +7,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-toolbar>
+  <!-- <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button fill="outline" slot="end" (click)="clickBackHandler()">Cancel</ion-button>
-      <ion-button fill="solid" color="primary" slot="end" (click)="clickSaveHandler()">Save</ion-button>
+      <ion-button fill="outline" (click)="clickBackHandler()">Cancel</ion-button>
+      <ion-button fill="solid" color="primary" (click)="clickSaveHandler()">Save</ion-button>
     </ion-buttons>
-  </ion-toolbar>
-  <!-- <form [formGroup]="editAccountForm" (ngSubmit)="saveAccount()"> -->
-    <ion-list>
+  </ion-toolbar> -->
+  <form [formGroup]="editAccountForm">
+    <ion-list no-lines>
       <ion-item>
-        <ion-label color="primary">Name</ion-label>
-        <ion-input placeholder="Name ..."></ion-input>
+        <ion-label floating>Name</ion-label>
+        <ion-input formControlName="accountName" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Website</ion-label>
+        <ion-input formControlName="accountWebsite" type="text"></ion-input>
       </ion-item>
     </ion-list>
-  <!-- </form> -->
+    <ion-buttons slot="end">
+        <ion-button fill="outline" (click)="clickBackHandler()">Cancel</ion-button>
+        <ion-button fill="solid" color="primary" (click)="clickSaveHandler()">Save</ion-button>
+    </ion-buttons>
+  </form>
 </ion-content>
