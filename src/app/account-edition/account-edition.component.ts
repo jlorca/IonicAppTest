@@ -41,7 +41,7 @@ export class AccountEditionComponent implements OnInit {
       this.prepareDataModel();
 
       this.apiService.updateAccounts(this.account).subscribe(data => {
-        console.log('SAVED!!');
+        this.router.navigate(['/account-detail/' + this.account.Id]);
       }, () => {});
 
     } else {
